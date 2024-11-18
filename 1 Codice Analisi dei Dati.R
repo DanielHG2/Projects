@@ -20,10 +20,10 @@ Tabella_1 <- data.frame(Media = Media, SD = Deviazione_standard, Skewness = Skew
 rownames(Tabella_1) <- c("Bitcoin") #riferimento ai parametri di una normale
 Tabella_quartili <- data.frame (Quartili = Quartili)
 Tabella_quartili_t <- t(Tabella_quartili)
-##La tabbella che arrivano dal print sono digitabili direttamente in Latex
+## digitabili direttamente in Latex
 print(xtable(Tabella_statistiche, type = 'Latex'))
 print(xtable(Tabella_quartili_t, type = 'Latex'))
-##ora chiedo dei plot riguardanti la serie storica 
+## plot riguardanti la serie storica 
 plot.ts(Bitcoin) ##volatility clustering?
 par(mfrow = c(1, 2))
 acf(Bitcoin) ##segni di stazionarietà
@@ -49,8 +49,7 @@ p_LB_Bit <- LB_Bitcoin$p.value
 Tabella_2 <- data.frame(ADF= test_ADF_Bit, pval_ADF=p_ADF_Bit, JB = test_JB_Bit, pval_JB = p_JB_Bit)
 rownames(Tabella_2) <- c("Bitcoin")
 print(xtable(Tabella_2, type = 'Latex'))
-##considerazioni finali su ciò che ho ottenuto, perchè utilizzerò qreg
-##ecc
+##
 ##H0 no autocorrelazione a quel lag
 Box.test(Bitcoin, lag=1, type="Ljung-Box")
 sc1<-Box.test(Bitcoin, lag=1, type="Ljung-Box")
@@ -59,7 +58,7 @@ sc3<-Box.test(Bitcoin, lag=7, type="Ljung-Box")
 sc4<-Box.test(Bitcoin, lag=8, type="Ljung-Box")
 sc5<-Box.test(Bitcoin, lag=9, type="Ljung-Box")
 sc6<-Box.test(Bitcoin, lag=15, type="Ljung-Box")
-##estrazione dei pvalue
+##pvalue
 pval_L1 <- sc1$p.value
 pval_L2 <- sc2$p.value
 pval_L7 <- sc3$p.value
