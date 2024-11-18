@@ -1,1 +1,1 @@
-Introductory project in causal inference using stata.
+Introductory project about causal inference using stata.
