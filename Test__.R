@@ -9,16 +9,11 @@ library(GAS)
 library(xtable)
 library(PerformanceAnalytics)
 library(quantmod)
-source("CAViaR.R")
+source("Funzioni CAViaR.R")
 ret_crypto_index_comm <- read_excel("ret_crypto_index_comm.xlsx")
 ret_crypto_index_comm$Date <- as.Date(ret_crypto_index_comm$Date)
 calcolo_VAR_definitivo <- read_excel("calcoloVAR_definitivo.xlsx")
 calcolo_VAR_definitivo$Date <- as.Date(calcolo_VAR$Date)
-################################
-########### CON I NOSTRI DATI
-#################################
-##############################
-##noi abbiamo già dei rendimenti, partiamo da lì
 Bitcoin.ret <- xts(ret_crypto_index_comm[, 2], order.by = ret_crypto_index_comm$Date)
 Time = index(Bitcoin.ret)
 range(Time)
