@@ -3,20 +3,6 @@
 # "CAViaR: Conditional Autoregressive Value at Risk by Regression Quantiles"
 # by R. F. Engle and S. Manganelli (2004), Journal of Business & Economic Statistics
 ############################## 
-   
-
-
-###cerco di aggiungere i modelli CAVIAR del paper Forecasting value-at-risk by encompassing CAViaR
-##models via information criteria
-##(standard GARCH with m), (GJR-GARCH), (GJR-GARCH with m),
-##  (linear GARCH with m), (linear TGARCH with m) 
-
-
-
-
-
-
-
 
 # CAViaR specifications
 CAViaR.fun = function(beta, ret, tau, model, G) {
