@@ -37,18 +37,3 @@ christoffersen_test_AD = cvgtest(obj = list(loss = Dollar, VaR = VaR_AD_plot, p 
 
   christoffersen_test_result = VaRTest(breaches, method = "cc", conf.level = 0.99)
 print(christoffersen_test_result)
-###Dinamic Quantile
-  # We might need to add lags of breaches and returns if analyzing dynamics
-lag_breaches_AD <- c(NA, breaches_AD[-length(breaches_AD)])
-print(lag_breaches_AD)
-data <- data.frame(breaches = breaches_AD, lag_breaches = lag_breaches_AD)
-
-# Fit a logistic regression model
-model <- glm(breaches_AD ~ lag_breaches_AD, family = binomial(link = "logit"), data = data, na.action = na.exclude)
-summary(model)
-# Install and load the lmtest package for diagnostic tests
-if (!require(lmtest)) install.packages("lmtest")
-library(lmtest)
-
-# Run a Breusch-Godfrey test for autocorrelation
-bgtest(model, order = 1)
