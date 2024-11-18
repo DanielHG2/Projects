@@ -17,19 +17,6 @@ Bitcoin <- na.omit(ret_crypto_index_comm$`Bitcoin (BTC)`)
 Bitcoin <- c()
 Bitcoin.ret <- xts(ret_crypto_index_comm[, 2], order.by = ret_crypto_index_comm$Date)
 Bitcoin.ret <- xts(ret_crypto_index_comm[, 2], order.by = ret_crypto_index_comm$Date)
-#GARCH (1,1)
-#NORMALE
-Modello_GARCH11=ugarchspec(mean.model = list(armaOrder = c(0,0)), variance.model = list(model="sGARCH"), distribution.model = 'norm')
-BITCOIN_G11=ugarchfit(data = Bitcoin.ret, spec = Modello_GARCH11)
-FIT_BITCOINm = fitted(BITCOIN_G11)
-FIT_BITCOINs = sigma(BITCOIN_G11)
-####parametro mu
-mu <- min(FIT_BITCOINm)
-
-################################################################
-##############################################################
-############################################################
-
 
 
 ####### CON I NUOVI MODELLI: IGm, ASm, SAVm, GJG e GJGm.
@@ -144,9 +131,8 @@ est.CAViaR = function(ret, tau, model, n.start, G) {
   out = list(tau = tau, pars = pars_optim, QL = QL_max, fitted = fitted_VaR, VaR_violations = Hit)
   return(out)
   }
-##############################################à
+#####################################
 
-######ok
 VaR_IGm_05 <- est.CAViaR(ret = Bitcoin, tau = 0.05, model = "IGm", n.start = 10)
 VaR_IGm05 <- CAViaR.fun(beta = VaR_IGm_05$pars, ret = Bitcoin.ret, tau = 0.05, model = "IGm", G=10)
 VaR_IGm_01 <- est.CAViaR(ret = Bitcoin, tau = 0.01, model = "IGm", n.start = 10)
@@ -156,7 +142,7 @@ VaR_ASm_05 <- est.CAViaR(ret = Bitcoin.ret, tau = 0.05, model = "ASm", n.start =
 VaR_ASm05 <- CAViaR.fun(beta = VaR_ASm_05$pars, ret = Bitcoin.ret, tau = 0.05, model = "ASm", G=10)
 VaR_ASm_01 <- est.CAViaR(ret = Bitcoin.ret, tau = 0.01, model = "ASm", n.start = 10)
 VaR_ASm01 <- CAViaR.fun(beta = VaR_ASm_01$pars, ret = Bitcoin.ret, tau = 0.01, model = "ASm", G=10)
-######ok
+######
 VaR_SAVm_05 <- est.CAViaR(ret = Bitcoin.ret, tau = 0.05, model = "SAVm", n.start = 10)
 VaR_SAVm05 <- CAViaR.fun(beta = VaR_SAVm_05$pars, ret = Bitcoin.ret, tau = 0.05, model = "SAVm", G=10)
 VaR_SAVm_01 <- est.CAViaR(ret = Bitcoin.ret, tau = 0.01, model = "SAVm", n.start = 10)
