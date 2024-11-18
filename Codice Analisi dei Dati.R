@@ -38,7 +38,7 @@ boxplot(Bitcoin, main="Boxplot", ylab="Bitcoin") ##presenza di outliers
 ADF_Bitcoin <- adf.test(Bitcoin) ##già stazionari poichè sono rendimenti
 test_ADF_Bit <- ADF_Bitcoin$statistic
 p_ADF_Bit <- ADF_Bitcoin$p.value
-JB_Bitcoin <- jarque.bera.test(Bitcoin)##differisce da una normale per via delle caratteristiche di Bitcoin, leptocurtica tipica finanza ecc
+JB_Bitcoin <- jarque.bera.test(Bitcoin)##differisce da una normale per via delle caratteristiche di Bitcoin, leptocurtica ecc
 test_JB_Bit <- JB_Bitcoin$statistic
 p_JB_Bit <- JB_Bitcoin$p.value
 BP_Bitcoin <- bptest(Bitcoin)
